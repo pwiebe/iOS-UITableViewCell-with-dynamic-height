@@ -12,7 +12,7 @@
 @interface TableViewController ()
 
 @property (nonatomic, strong) NSArray *dataSource;
-
+@property (nonatomic) NSMutableArray *isVisible;
 @end
 
 static NSString* const CellIdentifier = @"DynamicTableViewCell";
@@ -28,6 +28,7 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
                         @"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
                         @"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
                         ];
+    self.isVisible = [@[@YES, @YES, @YES, @YES, @YES] mutableCopy];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -39,6 +40,11 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
 - (void)setUpCell:(DynamicTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.label.text = [self.dataSource objectAtIndex:indexPath.row];
     cell.secondLabel.text = [self.dataSource objectAtIndex:self.dataSource.count - indexPath.row - 1];
+    if ([self.isVisible[indexPath.row] isEqual:@NO]) {
+        cell.secondLabel.hidden = YES;
+    } else {
+        cell.secondLabel.hidden = NO;
+    }
 }
 
 # pragma mark - UITableViewControllerDelegate
@@ -59,7 +65,13 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DynamicTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.secondLabel.hidden = !cell.secondLabel.hidden;
+    if ([self.isVisible[indexPath.row] isEqual: @YES]) {
+        self.isVisible[indexPath.row] = @NO;
+        cell.secondLabel.hidden = YES;
+    } else {
+        self.isVisible[indexPath.row] = @YES;
+        cell.secondLabel.hidden = NO;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
