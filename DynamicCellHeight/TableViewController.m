@@ -38,6 +38,7 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
 
 - (void)setUpCell:(DynamicTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.label.text = [self.dataSource objectAtIndex:indexPath.row];
+    cell.secondLabel.text = [self.dataSource objectAtIndex:self.dataSource.count - indexPath.row - 1];
 }
 
 # pragma mark - UITableViewControllerDelegate
@@ -56,6 +57,10 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
     
     return cell;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DynamicTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.secondLabel.hidden = !cell.secondLabel.hidden;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     static DynamicTableViewCell *cell = nil;
@@ -70,7 +75,7 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
     return [self calculateHeightForConfiguredSizingCell:cell];
 }
 
-- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+- (CGFloat)calculateHeightForConfiguredSizingCell:(DynamicTableViewCell *)sizingCell {
     [sizingCell layoutIfNeeded];
     
     CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];

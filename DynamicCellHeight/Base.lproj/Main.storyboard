@@ -1,53 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="N9j-ce-Ltp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="N9j-ce-Ltp">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Table View Controller-->
         <scene sceneID="CHb-dZ-VTI">
             <objects>
                 <tableViewController id="N9j-ce-Ltp" customClass="TableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VLF-g9-ZZ7">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="VLF-g9-ZZ7">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DynamicTableViewCell" id="Efr-ev-qhi" customClass="DynamicTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="600" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DynamicTableViewCell" rowHeight="80" id="Efr-ev-qhi" customClass="DynamicTableViewCell">
+                                <rect key="frame" x="0.0" y="22" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Efr-ev-qhi" id="tfC-aI-UkA">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="eN0-p1-UuP">
                                             <rect key="frame" x="12" y="12" width="42" height="21"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="QKQ-AB-YlD"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="QKQ-AB-YlD"/>
-                                                </mask>
-                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label2" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="Gl8-45-yDT">
+                                            <rect key="frame" x="12" y="43" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <animations/>
                                     <constraints>
+                                        <constraint firstItem="Gl8-45-yDT" firstAttribute="top" secondItem="eN0-p1-UuP" secondAttribute="bottom" constant="10" id="FQ0-Pt-su9"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="eN0-p1-UuP" secondAttribute="bottom" priority="250" constant="10" id="XQ0-P6-q47"/>
                                         <constraint firstItem="eN0-p1-UuP" firstAttribute="leading" secondItem="tfC-aI-UkA" secondAttribute="leading" constant="12" id="XoV-Qq-t0G"/>
-                                        <constraint firstAttribute="bottom" secondItem="eN0-p1-UuP" secondAttribute="bottom" constant="10" id="Yzf-Y4-n9E"/>
+                                        <constraint firstItem="Gl8-45-yDT" firstAttribute="leading" secondItem="tfC-aI-UkA" secondAttribute="leadingMargin" constant="4" id="ceQ-Mi-NmL"/>
+                                        <constraint firstItem="Gl8-45-yDT" firstAttribute="top" secondItem="eN0-p1-UuP" secondAttribute="bottom" constant="10" id="dJw-dM-cmz"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Gl8-45-yDT" secondAttribute="bottom" constant="7" id="ohq-dR-brx"/>
                                         <constraint firstItem="eN0-p1-UuP" firstAttribute="top" secondItem="tfC-aI-UkA" secondAttribute="top" constant="12" id="urZ-D3-KaE"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="dJw-dM-cmz"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
-                                <animations/>
                                 <connections>
                                     <outlet property="label" destination="eN0-p1-UuP" id="9qe-0W-qBC"/>
+                                    <outlet property="secondLabel" destination="Gl8-45-yDT" id="jXr-IT-3k0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -59,7 +64,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Boe-SQ-aCK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="424" y="391"/>
+            <point key="canvasLocation" x="288" y="362"/>
         </scene>
     </scenes>
 </document>
